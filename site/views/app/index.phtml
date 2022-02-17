@@ -1,0 +1,304 @@
+<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10  col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Administrar Menu </h4></center> </div>
+
+	<div class="col-xs-12 col-md-6">
+
+		<table class="table ">
+		<tr class="active">
+		<td>id</td>
+		<td>titulo</td>
+		<td>enlace</td>
+		</tr>
+		<?php for ($i=0; $i < count($this->menus); $i++): ?>
+		<tr>
+		<td><?php echo $this->menus[$i]['id_menu'] ?></td>
+		<td><?php echo $this->menus[$i]['titulo'] ?></td>
+		<td><?php echo $this->menus[$i]['enlace'] ?></td>	
+		</tr>
+		<?php endfor; ?>
+		</table>
+
+</div>
+	<div class="col-xs-12 col-md-6">
+		
+		<table class="table ">
+		<tr class="active">
+		<?php for ($i=0; $i < count($this->rol); $i++): ?>
+		
+		<td><?php echo $this->rol[$i]['nombre_role'] ?></td>
+		
+		<?php endfor; ?>
+		</tr>
+		<?php for ($i=0; $i < count($this->menus) ; $i++): ?>
+		<tr>
+			<?php for ($x=0; $x < count($this->rol) ; $x++): ?>
+			<td> <input id="permisos_ch" <?php echo $retVal = ($this->matris[$i][$x]['permiso']=="1") ? "checked" : "" ; ?> type="checkbox" data-menu="<?php echo $this->menus[$i]['id_menu'] ?>" data-rol="<?php echo $this->rol[$x]['id_role'] ?>"></td>
+			<?php endfor; ?>
+
+		</tr>
+		<?php endfor; ?>
+		</table>
+
+
+	</div> 
+	<div class="well well-lg col-md-12">  
+
+		<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Agregar Roles </h4></center> </div>
+	
+	<div class="col-md-6 col-md-offset-3">
+		<div class="form-group">
+            <label for="exampleInputEmail1">Nombre del Rol</label>
+            <input type="text" class="form-control" id="rol" name="rol" placeholder="Nombre Rol">
+          </div>
+          <center> <button type="button" id="guardar_rol" class="btn btn-default">Registrar</button> </center>
+	</div>
+
+	</div>
+	
+
+
+	
+<div class="well well-lg col-md-12"> 
+
+<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Registrar Usuarios </h4></center> </div>
+	
+	<div class="col-md-6 col-md-offset-3" id="div_usuario">
+		<div class="form-group ">
+              <label >Cedula</label>
+              	
+                <input type="text" type="text" class="form-control" id="cedula" name="cedula" required="required">
+              	
+          </div>
+          <div class="form-group ">
+              <label >Nombre</label>
+              	 
+                <input type="text" type="text" class="form-control" id="nombre" name="nombre" required="required">
+              	
+          </div>
+          <div class="form-group ">
+              <label >Apellido</label>
+              	 
+                <input type="text" type="text" class="form-control" id="apellido" name="apellido" required="required">
+              	
+          </div>
+          <div class="form-group ">
+              <label >Correo</label>
+              	 
+                <input type="text" type="text" class="form-control" id="correo" name="correo" required="required">
+              	
+          </div>
+          <div class="form-group ">
+              <label >Empresa</label>
+              	 
+                <input type="text" type="text" class="form-control" id="empresa" name="empresa" required="required">
+              	
+          </div>
+          <div class="form-group ">
+              <label >Departamento</label>
+              	 
+                <input type="text" type="text" class="form-control" id="departamento" name="departamento" required="required">
+          </div>
+          <div class="form-group ">
+              <label >Tipo de usuario</label>
+              	 
+                <select class="form-control" id="role_usuario">
+                	<option value="">---> Seleccione <---</option>
+
+                	<?php for ($i=0; $i < count($this->rol) ; $i++): ?>
+                		<option value="<?php echo $this->rol[$i]['id_role'] ?>"><?php echo $this->rol[$i]['nombre_role'] ?></option>
+                		<?php endfor; ?>
+                </select>
+          </div>
+ <div class="form-group ">
+              <label >Usuario</label>
+              	 <input type="hidden"  id="verificar_usuario">
+              	 <input type="hidden"  id="verificar_clave">
+                <input type="text" type="text" class="form-control" id="usuario" name="usuario" required="required">
+              	<p id="usuario_existe"> <spam class="offline"> El Nombre de usuario ya existe. </spam></p>
+              	<p id="usuario_disponible"> <spam class="online"> El Nombre de usuario esta disponible. </spam></p>
+          </div>
+          <div class="form-group">
+              <label>Contraseña</label>
+            
+                <input type="password" type="text" class="form-control" id="contraseña" name="contraseña" required="required">
+              
+          </div>
+          <div class="form-group ">
+              <label >Confirmar Contraseña</label>
+          
+                <input type="password" type="text" class="form-control" id="confirmar_contraseña" name="confirmar" required="required">
+                <p  id="pass_no_coinciden"> <spam class="offline">Las Contraseñas no coinciden.</spam></p>
+                <p  id="verificado"> <spam class="online">Ahora si puede registrar.</spam></p>
+              
+          </div>
+        
+<center> <button type="button" id="guardar_usuario" class="btn btn-default" disabled>Registrar</button> </center>
+</div>
+
+          
+	</div>
+
+
+</div>
+
+
+
+<div class="well well-lg col-md-12"> 
+
+
+<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Administrar Usuarios</h4></center> </div>
+	
+	<div class="col-xs-6 col-xs-offset-3">
+		<label for="exampleInputEmail1">Buscar Usuario por el Login</label>
+		<center><input class="form-control" type="text" id="buscar_usuario"></center>
+	</div>
+	<div class="col-md-12" id="div_contenedor">
+		
+	</div>
+
+
+
+
+	<!-- <div class="col-md-6 col-md-offset-3">
+          <center> <button type="button" id="adm_usuarios" class="btn btn-default">Buscar</button> </center>
+	</div>
+ -->
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Poner a Funcionar Esta Parte del Sistema.... -->
+
+
+	
+<div class="well well-lg col-md-12" hidden> 
+		<div class="header-titulos col-xs-12"> <center> <h4>Colocar la web en mantenimiento</h4> </center></div>
+	<div class="col-md-12">
+		<div class="col-md-6">
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="radio1" value="activar">
+			    Activar la Web
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="radio1" value="desactivar">
+			   Desactivar la Web
+			  </label>
+			</div>
+			 <div class="form-group">
+			    <label for="">Configurar la fecha:</label>
+			    <input type="date" value="<?php if (isset($this->bloqueo->fecha)){ echo $this->bloqueo->fecha;} ?>" class="form-control" id="fecha_activo" placeholder="">
+			  </div>
+			  <button type="submit" id="btn_actv" class="btn btn-default">enviar</button>
+		</div>
+		<div class="col-md-6">
+			<center><div>Estado del Sistema:</div></center>
+			<?php if(!$this->bloqueo): ?>
+				<center> <spam class="online"> ONLINE </spam> </center>
+			<?php else:  ?>
+				<center><spam class="offline"> OFFLINE </spam> </center> <br> <center> Hasta la fecha <?php echo $this->bloqueo_datos['fecha'] ?> </center>
+			<?php endif; ?>
+		</div>
+			
+		
+	</div>
+	
+</div>
+
+
+	
+
+	<div class="col-xs-12">
+		<div class="header-titulos col-xs-12">  <center> <h4> Logs (Visitas al Sistema.) </h4> </center></div>
+	<table class="table">
+		
+		<tr>
+	
+		<td id="log_cen" colspan="7" >Ips Registrados</td>
+		
+		</tr>
+		<tr>
+	
+		<td>Total</td>
+		<td>Hoy</td>
+		<td>Está Semana</td>
+		<td>Este Mes</td>
+		</tr>
+		<tr>
+	
+		<td><?php echo $this->cont['total']['num'] ?></td>
+		<td><?php echo $this->cont['hoy']['num'] ?></td>
+		<td><?php echo $this->cont['semana']['num'] ?></td>
+		<td><?php echo $this->cont['mes']['num'] ?></td>
+		</tr>
+
+		<tr><td id="log_cen" colspan="7">Log del sistema - Ultimos 100 Registros</td></tr>
+		<tr>
+		<td>Ip</td>
+		<td>ID Usuario</td>
+		<td>Login</td>
+		<td>Controlador</td>
+		<td>Metodo</td>
+		<td>Fecha</td>
+		<td>Hora</td>
+		</tr>
+<!-- count($this->logs) -->
+		<?php for ($i=0; $i < 100 ; $i++): ?>
+
+		<tr>
+		<td><?php echo $this->logs[$i]['ip'] ?></td>
+		<td><?php echo $this->logs[$i]['id_usuario'] ?></td>
+		<td><?php echo $this->logs[$i]['login'] ?></td>
+		<td><?php echo $this->logs[$i]['controlador'] ?></td>
+		<td><?php echo $this->logs[$i]['metodo'] ?></td>
+		<td><?php echo $this->logs[$i]['fecha'] ?></td>
+		<td><?php echo $this->logs[$i]['hora'] ?></td>
+		</tr>
+
+
+		<?php endfor; ?>
+
+	</table>
+
+		
+		
+	</div>
+
+
+</div>
+
+
+
+<div class="modal fade" id="modalusuario" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel"> <b> Editar Usuario </b></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="e_usuario">
+         <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="modificar_usuario">Modificar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,250 @@
+<!-- page content -->
+<div class="container-fluid px-4">          
+  <h1 class="mt-2"> <i class="fas fa-user-tie"></i> Usuarios</h1>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel card">
+        <div class="x_title card-header mb-1">
+          <i class="fas fa-user-tie"></i>
+          Administrar Usuarios
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+          </ul>
+        </div>
+        <div class="x_content card-body">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card border-0">
+              <div class="card-body">
+                <form id="form_usuario">
+                  <div class="row mb-2">
+                    <div class="col-md-3 offset-md-1">
+                      <div class="form-floating mb-md-0">
+                        <input class="form-control" id="usu_codigo" type="text" placeholder="Ingrese Codigo Usuario" required="required"/>
+                        <label class="control-label" for="usu_codigo">Codigo Usuario<span class="required">*</span></label>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="form-floating">
+                        <input class="form-control" id="usu_nombre" type="text" placeholder="Ingrese Nombre del Usuario" required="required"/>
+                        <label for="usu_nombre">Nombre del Usuario<span class="required">*</span></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-md-5 offset-md-1">
+                      <div class="form-floating">
+                        <input class="form-control" id="usu_correo" type="email" placeholder="nombre@ejemplo.com" required="required"/>
+                        <label for="usu_correo">Correo<span class="required">*</span></label>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-floating">
+                        <input class="form-control" id="usu_telefono" type="tel" title="ejemplo +44 8984 1234" placeholder="+44 8984 1234" pattern="^\+((?:9[679]|8[035789]|6[789]|5[90]|42|3[578]|2[1-689])|9[0-58]|8[1246]|6[0-6]|5[1-8]|4[013-9]|3[0-469]|2[70]|7|1)(?:\W*\d){0,13}\d$" required="required"/>
+                        <label for="usu_telefono">Telefono<span class="required">*</span></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-md-5 offset-md-1">
+                      <div class="form-floating mb-md-0">
+                        <input class="form-control" id="usu_login" type="text" placeholder="Ingrese Login del Usuario" required="required"/>
+                        <label for="usu_login">Login<span class="required">*</span></label>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-floating mb-md-0">
+                        <input class="form-control" id="usu_password" type="password" placeholder="Ingrese Contraseña" required="required" />
+                        <label for="usu_password">Contraseña<span class="required">*</span></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-md-5 offset-md-1">
+                      <div class="form-floating mb-md-0">
+                        <select id="select_empresas_perfil" class="form-control" style="appearance:auto; padding-left:0.4rem;">
+                          <option value=""></option>
+                          <?php for ($i=0; $i < count($this->empresas); $i++) {
+                            if($this->empresas[$i]['emp_status']=='1'){
+                              $this->empresas[$i]['emp_status']='Activo';
+                            }else{
+                              $this->empresas[$i]['emp_status']='Inactivo';
+                            }
+                          ?>
+                          <option value="<?php echo $this->empresas[$i]['emp_codigo'] ?>"><?php echo $this->empresas[$i]['emp_nombre'] ?>  <?php echo $this->empresas[$i]['emp_status'] ?></option>
+                          <?php } ?> 
+                          <select>
+                        <label for="">Empresa<span class="required">*</span></label>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-floating mb-md-0">
+                        <select id="select_tipo_usuario" class="form-control" style="appearance:auto; padding-left:0.4rem;">
+                          <option value=""></option>
+                          <option value="3">Gerente</option>
+                          <option value="2">Dispacher</option>
+                          <select>
+                        <label for="">Tipo de Usuario<span class="required">*</span></label>
+                      </div>
+                    </div>                   
+                  </div>
+                  <div class="col-xl-3 col-md-4 offset-md-4 mb-2">
+                    <div class="card bg-primary text-white mb-2">
+                      <div class="card-body">
+                        <center><a id="agregar_usuario" class="small text-white stretched-link" href="#">Agregar Usuario</a></center>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="x_panel card mb-4">
+    <div class="card-header x_title">
+      <i class="far fa-list-alt me-1"></i>
+        Listado de Usuarios
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+        </ul>
+    </div>
+    <div class="card-body x_content">
+      <table id="datatablesSimple" class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Empresa</th>
+            <th>Tipo</th>
+            <th>Condicion</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php for ($i=0; $i < count($this->usuarios); $i++) {
+            if($this->usuarios[$i]['estado']=='1'){
+              $a='<a title="Activar/Desactivar" href="#" data-codigo="" data-id="'.$this->usuarios[$i]["id_usuario"].'" data-status="'.$this->usuarios[$i]["estado"].'" id="desactivar_usuario" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i> Desact.</a></td>';
+              $this->usuarios[$i]['estado']='Activo';
+            }else{
+              $a='<a title="Activar/Desactivar" href="#" data-codigo="" data-id="'.$this->usuarios[$i]["id_usuario"].'" data-status="'.$this->usuarios[$i]["estado"].'" id="desactivar_usuario" class="btn btn-success btn-xs"><i class="fas fa-trash-alt"></i> Activar</a></td>';
+              $this->usuarios[$i]['estado']='Inactivo';
+            }
+            ?> 
+            <tr>
+ 
+              <td class="ver_usuario" data-id="<?php echo $this->usuarios[$i]['id_usuario'] ?>"><center><?php echo $this->usuarios[$i]['nombre'] ?></center></td>
+              <td><center><?php echo $this->usuarios[$i]['emp_nombre'] ?></center></td>
+              <td><center><?php echo $this->usuarios[$i]['nombre_role'] ?></center></td>
+              <td><center><?php echo $this->usuarios[$i]['estado'] ?></center></td>
+              <td><a href="#" data-toggle="modal" data-target="#modal_editar_usuario" id='boton_modal_editar' data-id="<?php echo $this->usuarios[$i]['id_usuario'] ?>" class="btn btn-warning btn-xs" data-backdrop="static" data-keyboard="false"><i class="fas fa-pencil-alt"></i> Editar </a>
+              <?php echo $a ?>
+            </tr>
+                        <?php } ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-xl" id="modal_editar_usuario" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Editar Usuario<br><small></small></h4>
+        <button id="cerrar_modal_x"  type="button" class="btn btnx"><span aria-hidden="true">×</span>
+        <button id="cerrar_modal_oculto" data-dismiss="modal" type="button" class="close btn btnx" hidden></button>
+      </div>
+      <div class="modal-body">
+        <div class="x_content card-body">
+          <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card border-0">
+              <div class="card-body">
+                <form id="form_usuario_editar">
+                  <div class="row mb-1">
+                    <div class="col-md-3 offset-md-1">
+                      <div class="form-floating mb-1 mb-md-0">
+                        <input type="hidden" id="cho_pk">
+                        <input class="form-control" id="usu_codigo_editar" type="text" placeholder="Ingrese Codigo Chofer" required="required"/>
+                        <label for="usu_codigo_editar">Codigo Usuario<span class="required">*</span></label>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="form-floating">
+                        <input class="form-control" id="usu_nombre_editar" type="text" placeholder="Ingrese Nombre del Chofer" required="required"/>
+                        <label for="usu_nombre_editar">Nombre del Usuario<span class="required">*</span></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-md-5 offset-md-1">
+                      <div class="form-floating mb-1">
+                        <input class="form-control" id="usu_correo_editar" type="email" placeholder="nombre@ejemplo.com" required="required"/>
+                        <label for="usu_correo_editar">Correo<span class="required">*</span></label>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-floating mb-1">
+                        <input class="form-control" id="usu_telefono_editar" type="tel" title="ejemplo +44 8984 1234" placeholder="+44 8984 1234" pattern="^\+((?:9[679]|8[035789]|6[789]|5[90]|42|3[578]|2[1-689])|9[0-58]|8[1246]|6[0-6]|5[1-8]|4[013-9]|3[0-469]|2[70]|7|1)(?:\W*\d){0,13}\d$" required="required"/>
+                        <label for="usu_telefono_editar">Telefono<span class="required">*</span></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-md-5 offset-md-1">
+                      <div class="form-floating mb-1 mb-md-0">
+                        <input class="form-control" id="usu_login_editar" type="text" placeholder="" required="required"/>
+                        <label for="usu_login_editar">Login<span class="required">*</span></label>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-floating mb-1 mb-md-0">
+                        <input class="form-control" id="usu_password_editar" type="text" placeholder="" required="required"/>
+                        <label for="usu_password_editar">Contraseña<span class="required">*</span></label>
+                      </div>
+                    </div>                    
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-md-5 offset-md-1">
+                      <div class="form-floating mb-md-0">
+                        <select id="select_empresas_perfil_editar" class="form-control" style="appearance:auto; padding-left:0.4rem;">
+                          <option value=""></option>
+                          <?php for ($i=0; $i < count($this->empresas); $i++) {
+                            if($this->empresas[$i]['emp_status']=='1'){
+                              $this->empresas[$i]['emp_status']='Activo';
+                            }else{
+                              $this->empresas[$i]['emp_status']='Inactivo';
+                            }
+                          ?>
+                          <option value="<?php echo $this->empresas[$i]['emp_codigo'] ?>"><?php echo $this->empresas[$i]['emp_nombre'] ?>  <?php echo $this->empresas[$i]['emp_status'] ?></option>
+                          <?php } ?> 
+                          <select>
+                        <label for="">Empresa<span class="required">*</span></label>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-floating mb-md-0">
+                        <select id="select_tipo_usuario_editar" class="form-control" style="appearance:auto; padding-left:0.4rem;">
+                          <option value=""></option>
+                          <option value="3">Gerente</option>
+                          <option value="2">Dispacher</option>
+                          <select>
+                        <label for="">Tipo de Usuario<span class="required">*</span></label>
+                      </div>
+                    </div>                    
+                  </div>                  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btnModal" id="editar_usuario">Editar</button>
+        <button id="cerrar_modal_btn" type="button" class="btn btn-default btnModal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

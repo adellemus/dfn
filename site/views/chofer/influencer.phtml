@@ -1,0 +1,386 @@
+<!-- ============================================================== -->
+<!-- wrapper  -->
+<!-- ============================================================== -->
+<div class="container-fluid px-4">
+    <!-- ============================================================== -->
+    <!-- pageheader -->
+    <!-- ============================================================== -->
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
+          <h6 class="mb-0">Perfil del Chofer</h6>
+        </div>
+        <div class="page-header col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
+          <select id="select_choferes_perfil" class="form-control" style="appearance:auto; padding-left:0.4rem;">
+            <option value=""></option>
+            <?php for ($i=0; $i < count($this->choferes); $i++) {
+              if($this->choferes[$i]['cho_status']=='1'){
+                $this->choferes[$i]['cho_status']='Activo';
+              }else{
+                $this->choferes[$i]['cho_status']='Inactivo';
+              }
+            ?>
+              <option value="<?php echo $this->choferes[$i]['cho_codigo'] ?>"><?php echo $this->choferes[$i]['cho_nombre'] ?>  <?php echo $this->choferes[$i]['cho_status'] ?></option>
+            <?php } ?> 
+
+          <select>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end pageheader -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- content -->
+    <!-- ============================================================== -->
+    <div class="row">
+      <!-- ============================================================== -->
+      <!-- profile -->
+      <!-- ============================================================== -->
+      <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
+        <!-- ============================================================== -->
+        <!-- card profile -->
+        <!-- ============================================================== -->
+        <div id="div_card_perfil" class="card">
+          <div class="card-body padding-card">
+            <div class="user-avatar text-center d-block">
+              <img src="<?php echo BASE_URL ?>/public/img/perfil.png" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+            </div>
+            <div class="text-center">
+              <h2 class="font-24 mb-0 nombre_chofer"><?php echo $this->perfil_chofer['cho_nombre'] ?></h2>
+              Project Manager @Influnce
+            </div>
+          </div>
+          <div class="card-body border-top padding-card">
+            <h5 class="font-16">Informacion de Contacto</h5>            
+              <ul class="list-unstyled mb-0">
+                <li class="mb-0"><i class="fas fa-envelope"></i> <y class="correo_chofer"><?php echo $this->perfil_chofer['cho_correo'] ?></y></li>
+                <li class="mb-0"><i class="fas fa-phone"></i> <y class="telefono_chofer"><?php echo $this->perfil_chofer['cho_telefono'] ?></y></li>
+              </ul>
+      
+          </div>
+          <div class="card-body border-top padding-card">
+            <h5 class="font-16">Datos del Vehiculo</h5>
+            <h6 class="mb-0 equipamento_chofer"><?php echo $this->perfil_chofer['cho_equipamento'] ?></h6>
+            <h6 class="mb-0 nro_camion_chofer"><?php echo $this->perfil_chofer['cho_nro_camion'] ?></h6>
+            <h6 class="mb-0 nro_trailer_chofer"><?php echo $this->perfil_chofer['cho_nro_trailer'] ?></h6>
+          </div>
+          <div class="card-body border-top padding-card">
+            <h5 class="font-16">Datos de Empresa</h5>
+            <div class="">
+              <ul class="mb-0 list-unstyled">
+                <li class="mb-1">Dispacher
+                  <ul class="nombre_dispacher"><?php echo $this->perfil_chofer['nombre'] ?></ul>
+                </li>
+                <li class="mb-1">Empresa
+                  <ul class="nombre_empresa"><?php echo $this->perfil_chofer['emp_nombre'] ?></ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end card profile -->
+        <!-- ============================================================== -->
+      </div>
+      <!-- ============================================================== -->
+      <!-- end profile -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- campaign data -->
+      <!-- ============================================================== -->
+      <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
+      <!-- ============================================================== -->
+      <!-- campaign tab one -->
+      <!-- ============================================================== -->
+        <div class="influence-profile-content pills-regular">
+          <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="pills-campaign-tab" data-bs-toggle="pill" data-bs-target="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Informacion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pills-packages-tab" data-bs-toggle="pill" data-bs-target="#pills-packages" role="tab" aria-controls="pills-packages" aria-selected="false">Documentos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pills-92-tab" data-bs-toggle="pill" data-bs-target="#pills-92" role="tab" aria-controls="pills-92" aria-selected="false">Actividades</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="section-block">
+                    <h3 class="section-title">Informacion</h3>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="mb-1 codigo_chofer"><?php echo $this->perfil_chofer['cho_codigo'] ?></h4>
+                      Codigo
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="mb-1 nombre_chofer"><?php echo $this->perfil_chofer['cho_nombre'] ?></h4>
+                      Nombre
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="mb-1 correo_chofer"><?php echo $this->perfil_chofer['cho_correo'] ?></h4>
+                      Correo
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="mb-1 telefono_chofer"><?php echo $this->perfil_chofer['cho_telefono'] ?></h4>
+                      Telefono
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="mb-1 estado_chofer"><?php echo $this->perfil_chofer['cho_estado'] ?></h4>
+                      Estado
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="mb-1 equipamento_chofer"><?php echo $this->perfil_chofer['cho_equipamento'] ?></h4>
+                      Equipamento
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="mb-1 nro_camion_chofer"><?php echo $this->perfil_chofer['cho_nro_camion'] ?></h4>
+                      Nro Camion
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="mb-1 nro_trailer_chofer"><?php echo $this->perfil_chofer['cho_nro_trailer'] ?></h4>
+                      Nro Trailer
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="section-block">
+                <h4 class="section-title">Empresa</h4>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div class="media influencer-profile-data d-flex align-items-center p-2">
+                        <div class="media-body ">
+                          <div class="influencer-profile-data">
+                            <h5 class="m-b-10 nombre_empresa"><?php echo $this->perfil_chofer['emp_nombre'] ?></h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="section-block">
+                <h4 class="section-title">Dispacher</h4>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div class="media influencer-profile-data d-flex align-items-center p-2">
+                        <div class="media-body ">
+                          <div class="influencer-profile-data">
+                            <h5 class="m-b-10 nombre_dispacher"><?php echo $this->perfil_chofer['nombre'] ?></h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-packages" role="tabpanel" aria-labelledby="pills-packages-tab">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="section-block">
+                    <h2 class="section-title">My Packages</h2>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-header bg-primary text-center p-3 ">
+                      <h4 class="mb-0 text-white"> Basic</h4>
+                    </div>
+                    <div class="card-body text-center">
+                      <h1 class="mb-1">$150</h1>
+                      <p>Per Month Plateform</p>
+                    </div>
+                    <div class="card-body border-top">
+                      <ul class="list-unstyled bullet-check font-14">
+                        <li>Facebook, Instagram, Pinterest,Snapchat.</li>
+                        <li>Guaranteed follower growth for increas brand awareness.</li>
+                        <li>Daily updates on choose platforms</li>
+                        <li>Stronger customer service through daily interaction</li>
+                        <li>Monthly progress report</li>
+                        <li>1 Million Followers</li>
+                      </ul>
+                      <a href="#" class="btn btn-outline-secondary btn-block btn-lg">Get Started</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-header bg-info text-center p-3">
+                      <h4 class="mb-0 text-white"> Standard</h4>
+                    </div>
+                    <div class="card-body text-center">
+                      <h1 class="mb-1">$350</h1>
+                      <p>Per Month Plateform</p>
+                    </div>
+                    <div class="card-body border-top">
+                      <ul class="list-unstyled bullet-check font-14">
+                        <li>Facebook, Instagram, Pinterest,Snapchat.</li>
+                        <li>Guaranteed follower growth for increas brand awareness.</li>
+                        <li>Daily updates on choose platforms</li>
+                        <li>Stronger customer service through daily interaction</li>
+                        <li>Monthly progress report</li>
+                        <li>2 Blog Post & 3 Social Post</li>
+                        <li>5 Millions Followers</li>
+                        <li>Growth Result</li>
+                      </ul>
+                      <a href="#" class="btn btn-secondary btn-block btn-lg">Get Started</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-header bg-primary text-center p-3">
+                      <h4 class="mb-0 text-white">Premium</h4>
+                    </div>
+                    <div class="card-body text-center">
+                      <h1 class="mb-1">$550</h1>
+                      <p>Per Month Plateform</p>
+                    </div>
+                    <div class="card-body border-top">
+                      <ul class="list-unstyled bullet-check font-14">
+                        <li>Facebook, Instagram, Pinterest,Snapchat.</li>
+                        <li>Guaranteed follower growth for increas brand awareness.</li>
+                        <li>Daily updates on choose platforms</li>
+                        <li>Stronger customer service through daily interaction</li>
+                        <li>Monthly progress report & Growth Result</li>
+                        <li>4 Blog Post & 6 Social Post</li>
+                      </ul>
+                      <a href="#" class="btn btn-secondary btn-block btn-lg">Contact us</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-92" role="tabpanel" aria-labelledby="pills-packages-tab">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="section-block">
+                    <h2 class="section-title">Actividades</h2>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-header bg-primary text-center p-3 ">
+                      <h4 class="mb-0 text-white"> Basic</h4>
+                    </div>
+                    <div class="card-body text-center">
+                      <h1 class="mb-1">$150</h1>
+                      <p>Per Month Plateform</p>
+                    </div>
+                    <div class="card-body border-top">
+                      <ul class="list-unstyled bullet-check font-14">
+                        <li>Facebook, Instagram, Pinterest,Snapchat.</li>
+                        <li>Guaranteed follower growth for increas brand awareness.</li>
+                        <li>Daily updates on choose platforms</li>
+                        <li>Stronger customer service through daily interaction</li>
+                        <li>Monthly progress report</li>
+                        <li>1 Million Followers</li>
+                      </ul>
+                      <a href="#" class="btn btn-outline-secondary btn-block btn-lg">Get Started</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-header bg-info text-center p-3">
+                      <h4 class="mb-0 text-white"> Standard</h4>
+                    </div>
+                    <div class="card-body text-center">
+                      <h1 class="mb-1">$350</h1>
+                      <p>Per Month Plateform</p>
+                    </div>
+                    <div class="card-body border-top">
+                      <ul class="list-unstyled bullet-check font-14">
+                        <li>Facebook, Instagram, Pinterest,Snapchat.</li>
+                        <li>Guaranteed follower growth for increas brand awareness.</li>
+                        <li>Daily updates on choose platforms</li>
+                        <li>Stronger customer service through daily interaction</li>
+                        <li>Monthly progress report</li>
+                        <li>2 Blog Post & 3 Social Post</li>
+                        <li>5 Millions Followers</li>
+                        <li>Growth Result</li>
+                      </ul>
+                      <a href="#" class="btn btn-secondary btn-block btn-lg">Get Started</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                  <div class="card">
+                    <div class="card-header bg-primary text-center p-3">
+                      <h4 class="mb-0 text-white">Premium</h4>
+                    </div>
+                    <div class="card-body text-center">
+                      <h1 class="mb-1">$550</h1>
+                      <p>Per Month Plateform</p>
+                    </div>
+                    <div class="card-body border-top">
+                      <ul class="list-unstyled bullet-check font-14">
+                        <li>Facebook, Instagram, Pinterest,Snapchat.</li>
+                        <li>Guaranteed follower growth for increas brand awareness.</li>
+                        <li>Daily updates on choose platforms</li>
+                        <li>Stronger customer service through daily interaction</li>
+                        <li>Monthly progress report & Growth Result</li>
+                        <li>4 Blog Post & 6 Social Post</li>
+                      </ul>
+                      <a href="#" class="btn btn-secondary btn-block btn-lg">Contact us</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end campaign tab one -->
+        <!-- ============================================================== -->
+      </div>
+      <!-- ============================================================== -->
+      <!-- end campaign data -->
+      <!-- ============================================================== -->
+    </div>
+  </div>
+
+<!-- ============================================================== -->
+<!-- end content -->
+<!-- ============================================================== -->
