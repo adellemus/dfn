@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', 'http://localhost/carga/');
+define('BASE_URL', 'http://dispatchfilesnetwork.com/');
 define('DEFAULT_CONTROLLER', 'login');
 define('DEFAULT_LAYOUT', 'basic');
 define('APP_NAME', 'Soporte');
@@ -12,6 +12,6 @@ define('HASH_KEY', '4f6a6d832be79');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'carga');
+define('DB_NAME', 'dfn');
 define('DB_CHAR', 'utf8');
 ?>
