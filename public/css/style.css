@@ -1,0 +1,95 @@
+input[type="date"].form-control, input[type="time"].form-control, input[type="datetime-local"].form-control, input[type="month"].form-control {
+    line-height: 23px !important;
+    color: #838282 !important;
+
+    }
+
+
+#textofinal{
+
+	text-align: right;
+}
+
+#table-info{
+
+	padding-top: 20px;
+}
+
+#foto-info{
+
+	margin-right: 80px;
+	padding-top: 30px;
+}
+
+
+#bien{
+
+	color: green;
+}
+#boton_guardar_imagen{
+
+	margin-bottom: 50px;
+}
+
+
+#mal{
+
+	color: red;
+}
+
+#blue{
+
+	color: #0aacc8;;
+}
+
+#guardar_foto_estudiante {
+    margin-top: 10px;
+}
+
+.boton_asignar {
+    margin-bottom: 15px;
+}
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('../img/loading2.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+
+
+.subir{
+
+padding: 5px 10px;
+background: #36c2dc;
+color: #fff;
+border: 0px solid #000;
+
+}
+ 
+.subir:hover{
+    color: #fff;
+    background: #0d7083;
+}
+
+#miscelaneos {
+
+    text-align: left !important;
+    padding-top: 20px !important;
+
+}
+
+.right_col{
+    min-height: 100% !important;
+}
+
+.site_title{
+
+    background-color: #ededed;
+    height: 58px;
+}
+
