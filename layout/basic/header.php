@@ -27,6 +27,8 @@
     <link href="<?php echo BASE_URL; ?>build/css/custom.min.css" rel="stylesheet">
     <link href="<?php echo BASE_URL; ?>public/css/style.css" rel="stylesheet">
     <link href="<?php echo BASE_URL; ?>layout/basic/css/styles.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>layout/basic/css/templatemo-style.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>layout/basic/css/vegas.min.css" rel="stylesheet">
 
     <link href="<?php echo BASE_URL; ?>public/css/alertify.bootstrap3.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo BASE_URL; ?>public/css/alertify.core.css" rel="stylesheet" type="text/css" />-->
